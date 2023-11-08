@@ -23,8 +23,8 @@ apigClientFactory.newClient = function (config) {
             sessionToken: '',
             region: '',
             apiKey: undefined,
-            defaultContentType: 'text/base64',
-            defaultAcceptType: 'text/base64'
+            defaultContentType: 'application/json',
+            defaultAcceptType: 'application/json'
         };
     }
     if(config.accessKey === undefined) {
@@ -44,16 +44,16 @@ apigClientFactory.newClient = function (config) {
     }
     //If defaultContentType is not defined then default to application/json
     if(config.defaultContentType === undefined) {
-        config.defaultContentType = 'text/base64';
+        config.defaultContentType = 'application/json';
     }
     //If defaultAcceptType is not defined then default to application/json
     if(config.defaultAcceptType === undefined) {
-        config.defaultAcceptType = 'text/base64';
+        config.defaultAcceptType = 'application/json';
     }
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://d188sta0ji.execute-api.us-east-1.amazonaws.com/Prod';
+    var invokeUrl = 'https://kokdjxovda.execute-api.us-east-1.amazonaws.com/Prod';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -122,18 +122,17 @@ apigClientFactory.newClient = function (config) {
     apigClient.uploadBucketKeyPut = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['key', 'bucket', 'x-amz-meta-CustomLabels', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Origin-Headers', 'Access-Control-Allow-Methods', 'Content-Type'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['key', 'bucket', 'x-amz-meta-CustomLabels'], ['body']);
         
         var uploadBucketKeyPutRequest = {
             verb: 'put'.toUpperCase(),
             path: pathComponent + uritemplate('/upload/{bucket}/{key}').expand(apiGateway.core.utils.parseParametersToObject(params, ['key', 'bucket', ])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-amz-meta-CustomLabels', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Origin-Headers', 'Access-Control-Allow-Methods', 'Content-Type']),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-amz-meta-CustomLabels']),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
-        console.log(uploadBucketKeyPutRequest)
-
+        
         return apiGatewayClient.makeRequest(uploadBucketKeyPutRequest, authType, additionalParams, config.apiKey);
     };
     
@@ -141,12 +140,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.uploadBucketKeyOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['key', 'bucket', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Origin-Headers', 'Access-Control-Allow-Methods', 'Content-Type'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['key', 'bucket', 'Access-Control-Allow-Origin', 'Access-Control-Allow-Origin-Headers', 'Access-Control-Allow-Methods'], ['body']);
         
         var uploadBucketKeyOptionsRequest = {
             verb: 'options'.toUpperCase(),
             path: pathComponent + uritemplate('/upload/{bucket}/{key}').expand(apiGateway.core.utils.parseParametersToObject(params, ['key', 'bucket', ])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['Access-Control-Allow-Origin', 'Access-Control-Allow-Origin-Headers', 'Access-Control-Allow-Methods', 'Content-Type']),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['Access-Control-Allow-Origin', 'Access-Control-Allow-Origin-Headers', 'Access-Control-Allow-Methods']),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };

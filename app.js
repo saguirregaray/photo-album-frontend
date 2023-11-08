@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(function (error) {
                     console.error('An error occurred:', error);
-                    console.log('An error occurred:', error)
+                    console.log(error)
                     alert('Upload failed. Please try again.');
                 });
             };

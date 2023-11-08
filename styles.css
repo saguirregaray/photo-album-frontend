@@ -1,0 +1,23 @@
+/* styles.css */
+
+/* Add some spacing between the search bar and image grid */
+#searchResults {
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Create a grid layout with a maximum width for the images */
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 800px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the grid horizontally */
+}
+
+.result-grid img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%; /* Maintain the aspect ratio */
+    object-fit: contain; /* Prevent cropping and maintain image aspect ratio */
+}

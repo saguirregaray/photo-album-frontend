@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Photo Search</title>
+</head>
+<body>
+    <h1>AI Photo Search</h1>
+
+    <!-- Search Form -->
+    <h2>Search Photos</h2>
+    <form id="searchForm">
+        <input type="text" id="searchQuery" placeholder="Enter a search query or use voice">
+        <button type="submit">Search</button>
+        <button type="button" id="voiceSearch">Voice Search</button>
+    </form>
+    <div id="searchResults"></div>
+
+    <!-- Upload Form -->
+    <h2>Upload Photo</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="photoInput" accept="image/*">
+        <input type="text" id="customLabels" placeholder="Custom Labels (comma-separated)">
+        <button type="button" id="uploadButton">Upload</button>
+    </form>
+
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="./apiGateway-js-sdk/apigClient.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
